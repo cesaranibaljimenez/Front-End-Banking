@@ -8,6 +8,8 @@ import Deposit from './Components/Deposit';
 import Withdraw from './Components/Withdraw';
 import Balance from './Components/Balance';
 import AllData from './Components/AllData';
+import UserContext from './Context/context'; // Ruta correcta al contexto
+
 
 
 function App() {
@@ -16,14 +18,17 @@ function App() {
       <h1>Welcome to Band Bank</h1>
       <NavBar />
       <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/CreateAccount/" component={CreateAccount} />
-        <Route path="/Login/" component={Login} />
-        <Route path="/Deposit/" component={Deposit} />
-        <Route path="/Withdraw" component={Withdraw} />
-        <Route path="/Balance/" component={Balance} />
-        <Route path="/AllData/" component={AllData} />
-      </Switch>
+        <UserContext.Provider value={{users:[{name:'cesar', email: 'cesar@mit.edu', password:'secret',balance:100}]}}>
+          <Route path="/" exact component={Home} />
+          <Route path="/CreateAccount/" component={CreateAccount} />
+          <Route path="/Login/" component={Login} />
+          <Route path="/Deposit/" component={Deposit} />
+          <Route path="/Withdraw" component={Withdraw} />
+          <Route path="/Balance/" component={Balance} />
+          <Route path="/AllData/" component={AllData} />
+        </UserContext.Provider>
+        </Switch>
+        
     </Router>
   );
 }
