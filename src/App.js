@@ -12,6 +12,7 @@ import AllData from './Components/AllData';
 function App() {
   return (
     <Router>
+      <h1>Welcome to Band Bank</h1>
       <NavBar />
       <Switch>
         <Route path="/" exact component={Home} />
