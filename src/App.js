@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './Components/NavBar';
 import Home from './Components/Home';
 import CreateAccount from './Components/CreateAccount';
@@ -8,7 +9,7 @@ import Deposit from './Components/Deposit';
 import Withdraw from './Components/Withdraw';
 import Balance from './Components/Balance';
 import AllData from './Components/AllData';
-import UserContext from './Context/context'; // Ruta correcta al contexto
+import UserContext from './Context/context';
 
 
 
