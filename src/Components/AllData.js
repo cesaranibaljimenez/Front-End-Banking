@@ -1,3 +1,5 @@
+import React from 'react';
+
 function AllData(){
   return (
     <>
@@ -5,3 +7,5 @@ function AllData(){
     </>
   );
 }
+
+export default AllData;
