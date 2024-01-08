@@ -1,4 +1,8 @@
 import React from 'react';
+const UserContext = React.createContext({
+    users: []
+  });
+  
 
 function Card(props) {
   return (
@@ -15,3 +19,5 @@ function Card(props) {
 }
 
 export default Card;
+export { UserContext };
+

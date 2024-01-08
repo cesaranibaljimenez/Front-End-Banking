@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import UserContext from '../context';
 import NavBar from './Components/NavBar';
 import Home from './Components/Home';
 import CreateAccount from './Components/CreateAccount';
@@ -15,7 +16,8 @@ import AllData from './Components/AllData';
 
 function App() {
   return (
-    <Router>
+    <UserContext.Provider value={{ users: [] }}>
+   <Router>
       <h1>Welcome to Band Bank</h1>
       <NavBar />
       <Switch>
@@ -26,10 +28,9 @@ function App() {
           <Route path="/Withdraw" component={Withdraw} />
           <Route path="/Balance/" component={Balance} />
           <Route path="/AllData/" component={AllData} />
-       
         </Switch>
-        
     </Router>
+    </UserContext.Provider>
   );
 }
 
