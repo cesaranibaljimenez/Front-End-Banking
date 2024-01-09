@@ -1,15 +1,21 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card } from 'react-bootstrap';
-import UserContext from '../context';
+import { UserContext } from '../context';
+
+
+
 
 function CreateAccount() {
+  console.log('Renderizadondo CreateAccount');
   const [show, setShow] = React.useState(true);
   const [status, setStatus] = React.useState('');
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const ctx = React.useContext(UserContext);
+
+  console.log('Contexto en CreateAccount:', ctx);
 
   function validate(field, label){
     if (!field) {
@@ -22,10 +28,12 @@ function CreateAccount() {
 
   function handleCreate(event){
     event.preventDefault(); // Evita el comportamiento predeterminado del formulario
+    console.log('Creando cuenta:', name, email, password);
     console.log(name, email, password);
     if (!validate(name, 'name') || !validate(email, 'email') || !validate(password, 'password')) return;
     
     ctx.users.push({name, email, password, balance: 100});
+    console.log('Usuario añadido:', ctx.users);
     setShow(false);
     setStatus('Account created successfully.');
   }

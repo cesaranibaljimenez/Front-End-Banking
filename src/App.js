@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import UserContext from '../context';
+import { UserContext } from './context';
 import NavBar from './Components/NavBar';
 import Home from './Components/Home';
 import CreateAccount from './Components/CreateAccount';
@@ -15,6 +15,8 @@ import AllData from './Components/AllData';
 
 
 function App() {
+          console.log('Renderizado App');
+
   return (
     <UserContext.Provider value={{ users: [] }}>
    <Router>
