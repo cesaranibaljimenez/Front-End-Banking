@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { UserContext } from './context';
 import NavBar from './Components/NavBar';
@@ -22,15 +22,15 @@ function App() {
    <Router>
       <h1>Welcome to Band Bank</h1>
       <NavBar />
-      <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/CreateAccount/" component={CreateAccount} />
-          <Route path="/Login/" component={Login} />
-          <Route path="/Deposit/" component={Deposit} />
-          <Route path="/Withdraw" component={Withdraw} />
-          <Route path="/Balance/" component={Balance} />
-          <Route path="/AllData/" component={AllData} />
-        </Switch>
+      <Routes>
+          <Route path="/" exact element={<Home />} />
+          <Route path="/CreateAccount/" element={<CreateAccount />} />
+          <Route path="/Login/" element={<Login />} />
+          <Route path="/Deposit/" element={<Deposit />} />
+          <Route path="/Withdraw" element={<Withdraw />} />
+          <Route path="/Balance/" element={<Balance />} />
+          <Route path="/AllData/" element={<AllData />} />
+        </Routes>
     </Router>
     </UserContext.Provider>
   );
