@@ -15,6 +15,10 @@ function CreateAccount() {
   const [password, setPassword] = React.useState('');
   const ctx = React.useContext(UserContext);
 
+  //verificar si todos los registros estan llenos
+
+  const allFieldsFilled = name !== '' && email !== '' && password !== '';
+
   console.log('Contexto en CreateAccount:', ctx);
 
   function validate(field, label){
@@ -64,7 +68,7 @@ function CreateAccount() {
               <label htmlFor="password" className="form-label">Password</label>
               <input type="password" className="form-control" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
             </div>
-            <button type="submit" className="btn btn-light">Create Account</button>
+            <button type="submit" className="btn btn-light" disabled={!allFieldsFilled}>Create Account</button>
           </form>
         ) : (
           <>
