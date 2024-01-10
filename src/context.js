@@ -1,8 +1,18 @@
-import React from 'react';
-const UserContext = React.createContext({
-    users: []
-  });
-  
+import React, { useState, createContext } from 'react';
+
+export const UserContext = createContext();
+export const UserProvider = ({ children }) => {
+const [users, setUsers] = useState([]);
+const [currentUser, setCurrentUser] = useState( {balance:0} );
+
+  return(
+    <UserContext.Provider value={{ users, setUsers, currentUser, setCurrentUser}}>
+        {children}
+    </UserContext.Provider>
+
+  );
+
+};
 
 function Card(props) {
   return (
@@ -19,5 +29,5 @@ function Card(props) {
 }
 
 export default Card;
-export { UserContext };
+
 
