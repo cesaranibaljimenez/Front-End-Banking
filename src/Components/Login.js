@@ -7,7 +7,7 @@ function Login() {
   const[email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const {users, setCurrentUSer} = useContext(UserContext);
+  const {users, setCurrentUser} = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -18,7 +18,7 @@ function Login() {
   const userFound = users.find(user => user.email === email);
   
     if(userFound && userFound.password === password){
-        setCurrentUSer(userFound);
+        setCurrentUser(userFound);
         navigate('/') //Redireccionamiento del usuario al Home
     } else {
       setError('Credenciales incorrectas');

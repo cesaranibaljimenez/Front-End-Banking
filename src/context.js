@@ -3,8 +3,9 @@ import React, { useState, createContext } from 'react';
 export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
 const [users, setUsers] = useState([]);
-const [currentUser, setCurrentUser] = useState( {balance:0} );
+const [currentUser, setCurrentUser] = useState(null);
 
+console.log("Usuarios al inicializar:", users);//depuración
   return(
     <UserContext.Provider value={{ users, setUsers, currentUser, setCurrentUser}}>
         {children}
