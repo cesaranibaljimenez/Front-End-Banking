@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Cambios de estilo cuando el cursor está sobre el nav-item */
+.nav-item:hover {
+  
+  background-color: #f0f0f0; /* Color de fondo */
+  color: #333; /* Color del texto */
+  
+}
