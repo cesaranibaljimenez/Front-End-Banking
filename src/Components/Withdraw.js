@@ -23,16 +23,16 @@ function Withdraw() {
 
         // Convertir a número y verificar el saldo
         const amount = parseFloat(withdrawAmount);
-        if (amount <= currentUser.balance) {
-        //Crear una copia y actualizar el saldo
-        const updatedUser = {...currentUser, balance: currentUser.balance - amount };
-        setCurrentUser(updatedUser);
-        setStatusMessage('Withdrawal succesful.');
-        setStatusType('succes');    
+        if (amount > currentUser.balance) {
+        //Si el monto a retira es amyor que el saldo
+            setStatusMessage('Transaction failed: insufficient funds.')
+            setStatusType('danger');
+       
+          
         } else {
             // Actualizar el saldo
-            currentUser.balance -= amount;
-            setCurrentUser(currentUser);
+            const updatedUser = {...currentUser, balance: currentUser.balance - amount };
+            setCurrentUser(updatedUser);
             setStatusMessage('Withdrawal successful.');
             setStatusType('success');
         }
