@@ -8,7 +8,6 @@ import CreateAccount from './Components/CreateAccount';
 import Login from './Components/Login';
 import Deposit from './Components/Deposit';
 import Withdraw from './Components/Withdraw';
-import Balance from './Components/Balance';
 import AllData from './Components/AllData';
 
 
@@ -28,7 +27,6 @@ function App() {
           <Route path="/Login/" element={<Login />} />
           <Route path="/Deposit/" element={<Deposit />} />
           <Route path="/Withdraw" element={<Withdraw />} />
-          <Route path="/Balance/" element={<Balance />} />
           <Route path="/AllData/" element={<AllData />} />
         </Routes>
     </Router>
