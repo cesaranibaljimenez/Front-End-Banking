@@ -36,7 +36,7 @@ function CreateAccount() {
     console.log(name, email, password);
     if (!validate(name, 'name') || !validate(email, 'email') || !validate(password, 'password')) return;
     
-    ctx.users.push({name, email, password, balance: 100});
+    ctx.users.push({name, email, password, balance: 0});
     console.log('Usuario añadido:', ctx.users);
     setShow(false);
     setStatus('Account created successfully.');

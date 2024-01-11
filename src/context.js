@@ -3,7 +3,7 @@ import React, { useState, createContext } from 'react';
 export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
 const [users, setUsers] = useState([]);
-const [currentUser, setCurrentUser] = useState(null);
+const [currentUser, setCurrentUser] = useState({ balance: 0 });
 
 console.log("Usuarios al inicializar:", users);//depuración
   return(
