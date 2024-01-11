@@ -20,9 +20,6 @@ function NavBar() {
             <Link className="nav-link" to="/Withdraw/">Withdraw</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/Balance/">Balance</Link>
-          </li>
-          <li className="nav-item">
             <Link className="nav-link" to="/AllData/">AllData</Link>
           </li>
          
