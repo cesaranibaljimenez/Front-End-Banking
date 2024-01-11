@@ -28,7 +28,8 @@ function Login() {
 
 
   return (
-    <Card>
+    <Card bg="primary" text="white" style={{ maxWidth: '18rem' }}>
+    <Card.Header>Login</Card.Header>
         <Card.Body>
             <Card.Title>Login</Card.Title>
             <Form onSubmit={handleSubmit}>
@@ -48,7 +49,7 @@ function Login() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </Form.Group>
-                <Button type="submit">Login</Button>
+                <Button variant="light" type="submit">Login</Button>
             </Form>
             {error && <Alert variant="danger">{error}</Alert>}
         </Card.Body>
