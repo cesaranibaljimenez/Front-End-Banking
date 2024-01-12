@@ -14,7 +14,7 @@ function CreateAccount() {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [errorMessage, setErrorMessage] = React.useState('');//estado para manejar los estados de error
-  const ctx = React.useContext(UserContext);
+  const [users, setUsers, addTransaction] = React.useContext(UserContext);
 
   //verificar si algún campo esta lleno
   const isAnyFieldFilled = name !== '' || email !== '' || password !== '';
@@ -51,8 +51,10 @@ function CreateAccount() {
     if (!validate(name, 'name') || !validate(email, 'email') || !validate(password, 'password')){
       return;
     }
-    
-    ctx.users.push({name, email, password, balance: 0});
+    //Agrega nuevo usuario y registra la transacción
+    const newUser = {name, email, password, balance: 0, transaction: []};
+    setUsers([...users, newUser]);
+    addTransaction(email, 'Account Creation', 0);
     console.log('Usuario añadido:', ctx.users);
     setShow(false);
     setStatus('Account created successfully.');
