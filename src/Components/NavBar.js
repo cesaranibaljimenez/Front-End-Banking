@@ -8,19 +8,19 @@ function NavBar() {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <Link className="nav-link" to="/CreateAccount/" title="Crear Cuenta">Create Account</Link>
+            <Link className="nav-link" to="/CreateAccount/" title="Create a user account">Create Account</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/Login/" title="Iniciar Sesión">Login</Link>
+            <Link className="nav-link" to="/Login/" title="Log in with your user account">Login</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/Deposit/" title="Realizar un depósito">Deposit</Link>
+            <Link className="nav-link" to="/Deposit/" title="Make a deposit transaction">Deposit</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/Withdraw/" title="Realizar un retiro">Withdraw</Link>
+            <Link className="nav-link" to="/Withdraw/" title="Make a witdrawal transaction">Withdraw</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/AllData/" title="Ver cuentas">AllData</Link>
+            <Link className="nav-link" to="/AllData/" title="View transaction movement">AllData</Link>
           </li>
          
         </ul>
