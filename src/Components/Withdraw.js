@@ -7,7 +7,7 @@ function Withdraw() {
     const [statusMessage, setStatusMessage] = useState('');
     const [showStatus, setShowStatus] = useState(false);
     const [statusType, setStatusType] = useState(''); // 'success' o 'danger'
-    const { currentUser, setCurrentUser } = useContext(UserContext);
+    const { users, setUsers, currentUser, setCurrentUser, addTransaction } = useContext(UserContext);
 
     const handleWithdraw = (e) => {
         e.preventDefault();
@@ -30,9 +30,10 @@ function Withdraw() {
        
           
         } else {
-            // Actualizar el saldo
+            // Actualizar el saldo y registrar la transacción
             const updatedUser = {...currentUser, balance: currentUser.balance - amount };
             setCurrentUser(updatedUser);
+            addTransaction(currentUser.email, 'Withdraw', amount);
             setStatusMessage('Withdrawal successful.');
             setStatusType('success');
         }

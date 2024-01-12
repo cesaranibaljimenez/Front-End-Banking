@@ -23,6 +23,7 @@ function AllData() {
                           <th scope="col">Name</th>
                           <th scope="col">Email</th>
                           <th scope="col">Password</th>
+                          <th scope='col'>Transactions</th>
                       </tr>
                   </thead>
                   <tbody>
@@ -32,6 +33,13 @@ function AllData() {
                               <td>{user.name}</td>
                               <td>{user.email}</td>
                               <td>{user.password}</td>
+                              <td>
+                                {user.transactions.map((transaction, index) => (
+                                  <div key={index}>
+                                    {transaction.type}: ${transaction.amount}
+                                  </div>
+                                ))}
+                              </td>
                           </tr>
                       ))}
                   </tbody>

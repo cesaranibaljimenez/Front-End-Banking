@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, Alert } from 'react-bootstrap';
 import { UserContext } from '../context';
@@ -8,19 +8,23 @@ import { UserContext } from '../context';
 
 function CreateAccount() {
   console.log('Renderizadondo CreateAccount');
-  const [show, setShow] = React.useState(true);
+  const [show, setShow] = useState(true);
   const [status, setStatus] = React.useState('');
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [errorMessage, setErrorMessage] = React.useState('');//estado para manejar los estados de error
-  const [users, setUsers, addTransaction] = React.useContext(UserContext);
+  const {users, setUsers, addTransaction} = useContext(UserContext);
+
+  useEffect(() => {
+    console.log('Usuarios actualizados:', users);
+}, [users]);
 
   //verificar si algún campo esta lleno
   const isAnyFieldFilled = name !== '' || email !== '' || password !== '';
  
 
-  console.log('Contexto en CreateAccount:', ctx);
+  console.log('Contexto en CreateAccount:', users);
 
   function validate(field, label){
     if (!field) {
@@ -51,11 +55,14 @@ function CreateAccount() {
     if (!validate(name, 'name') || !validate(email, 'email') || !validate(password, 'password')){
       return;
     }
+
+    //Crea el nuevo usuario
+    const newUser = {name, email, password, balance: 0, transactions: []};
     //Agrega nuevo usuario y registra la transacción
-    const newUser = {name, email, password, balance: 0, transaction: []};
+    addTransaction(email, 'Account Creation', 0, newUser);
     setUsers([...users, newUser]);
-    addTransaction(email, 'Account Creation', 0);
-    console.log('Usuario añadido:', ctx.users);
+    
+    console.log('Usuarios actualizados:', users);
     setShow(false);
     setStatus('Account created successfully.');
   }

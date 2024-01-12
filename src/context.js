@@ -3,7 +3,7 @@ import React, { useState, createContext } from 'react';
 export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
 const [users, setUsers] = useState([]);
-const [currentUser, setCurrentUser] = useState({ balance: 0 , transaction: [] });
+const [currentUser, setCurrentUser] = useState({ balance: 0 , transactions: [] });
 
 //Función para agregar una nueva transacción
 const addTransaction = (email, type, amount) => {
@@ -11,7 +11,7 @@ const addTransaction = (email, type, amount) => {
     if(user.email === email) {
       return {
           ...user,
-          transactions: [...user.transaction, {type, amount}]
+          transactions: [...user.transactions, {type, amount}]
       };
     }
     return user;

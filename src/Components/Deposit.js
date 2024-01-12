@@ -7,7 +7,7 @@ function Deposit() {
     const [statusMessage, setStatusMessage] = useState('');
     const [showStatus, setShowStatus] = useState(false);
     const [statusType, setStatusType] = useState(''); // 'success' o 'danger'
-    const { currentUser, setCurrentUser } = useContext(UserContext);
+    const { users, setUsers, currentUser, setCurrentUser, addTransaction } = useContext(UserContext);
 
     const handleDeposit = (e) => {
         e.preventDefault();
@@ -30,13 +30,13 @@ function Deposit() {
             return;
         }
 
-        // actualizar el saldo
+        // actualizar el saldo y registrar transacción
         const updatedUser = {...currentUser, balance: currentUser.balance + amount };
         setCurrentUser(updatedUser);
+        addTransaction(currentUser.email, 'Deposit', amount);
         setStatusMessage('Deposit succesful.');
         setStatusType('succes'); 
         setShowStatus(true);   
-        
         setDepositAmount('');
     };
 
