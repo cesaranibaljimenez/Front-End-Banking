@@ -16,8 +16,8 @@ function CreateAccount() {
   const [errorMessage, setErrorMessage] = React.useState('');//estado para manejar los estados de error
   const ctx = React.useContext(UserContext);
 
-  //verificar si todos los registros estan llenos
-
+  //verificar si algún campo esta lleno
+  const isAnyFieldFilled = name !== '' || email !== '' || password !== '';
  
 
   console.log('Contexto en CreateAccount:', ctx);
@@ -25,16 +25,19 @@ function CreateAccount() {
   function validate(field, label){
     if (!field) {
       setErrorMessage(`Error: Please enter your ${label}`);
+      setTimeout(() => setErrorMessage(''), 3000);
       return false;
     }
+    //Verificación de formato de correo electrónico
     if (label === 'email' && !/\S+@\S+/.test(email)){
-      //Verificación de formato de correo electrónico
-      setErrorMessage('Error: Please enter a valid email')
+      setErrorMessage('Error: Please enter a valid email');
+      setTimeout(() => setErrorMessage(''), 3000);
       return false;
     }
     if (label === 'password' && password.length < 8){
       //Verificación de lonsgitud de contraseña
       setErrorMessage('Error: Password must be at least 8 characters long');
+      setTimeout(() => setErrorMessage(''), 3000);
       return false
     }
     return true;
@@ -44,11 +47,11 @@ function CreateAccount() {
     event.preventDefault(); // Evita el comportamiento predeterminado del formulario
     console.log('Creando cuenta:', name, email, password);
     console.log(name, email, password);
+    setErrorMessage('');
     if (!validate(name, 'name') || !validate(email, 'email') || !validate(password, 'password')){
       return;
     }
     
-    setErrorMessage('');
     ctx.users.push({name, email, password, balance: 0});
     console.log('Usuario añadido:', ctx.users);
     setShow(false);
@@ -82,7 +85,7 @@ function CreateAccount() {
                 <label htmlFor="password" className="form-label">Password</label>
                 <input type="password" className="form-control" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
               </div>
-              <button type="submit" className="btn btn-light">Create Account</button>
+              <button type="submit" className="btn btn-light" disabled={!isAnyFieldFilled}>Create Account</button>
             </form>
           ) : (
             <>
