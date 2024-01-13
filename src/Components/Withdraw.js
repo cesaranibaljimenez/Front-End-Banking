@@ -20,9 +20,19 @@ function Withdraw() {
             setShowStatus(true);
             return;
         }
+        
+
 
         // Convertir a número y verificar el saldo
         const amount = parseFloat(withdrawAmount);
+
+        if (amount < 0) {
+          setStatusMessage('Only positive numbers are allowed')
+          setStatusType('danger');
+          setShowStatus(true);
+          return;
+      }
+
         if (amount > currentUser.balance) {
         //Si el monto a retira es amyor que el saldo
             setStatusMessage('Transaction failed: insufficient funds.')
