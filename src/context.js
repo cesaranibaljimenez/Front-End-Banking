@@ -6,19 +6,25 @@ const [users, setUsers] = useState([]);
 const [currentUser, setCurrentUser] = useState({ balance: 0 , transactions: [] });
 
 //Función para agregar una nueva transacción
-const addTransaction = (email, type, amount) => {
-  setUsers(users.map(user => {
-    if(user.email === email) {
-      return {
-          ...user,
-          transactions: [...user.transactions, {type, amount}]
+const addTransaction = (email, type, amount, newUser = null) => {
+  setUsers(currentUsers => {
+    //Si agregamos un nuevo usuario
+      let updatedUsers = newUser ? [...currentUsers, newUser] : currentUsers
+  
+    // Actualizar transacciones para el usuario existente
+    return updatedUsers.map(user => {
+      if (user.email === email) {
+          return {
+              ...user,
+              transactions: [...user.transactions, { type, amount }]
       };
     }
     return user;
-  }));
+  });
+});
 };
 
-console.log("Usuarios al inicializar:", users);//depuración
+
   return(
     <UserContext.Provider value={{ users, setUsers, currentUser, setCurrentUser, addTransaction}}>
         {children}

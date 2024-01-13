@@ -14,7 +14,7 @@ import AllData from './Components/AllData';
 
 
 function App() {
-          console.log('Renderizado App');
+          
 
   return (
     <UserProvider>

@@ -5,7 +5,7 @@ import { UserContext } from '../context';
 function AllData() {
     const { users } = useContext(UserContext);
 
-    console.log("Users en AllData:", users);
+    
     // Verificar si users está vacío o no definido
     if (!users || users.length === 0) {
       return <p>Loading user data...</p>;
