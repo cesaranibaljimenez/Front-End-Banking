@@ -7,7 +7,6 @@ import { UserContext } from '../context';
 
 
 function CreateAccount() {
-  console.log('Renderizadondo CreateAccount');
   const [show, setShow] = useState(true);
   const [status, setStatus] = React.useState('');
   const [name, setName] = React.useState('');
@@ -17,14 +16,11 @@ function CreateAccount() {
   const {users, setUsers, addTransaction} = useContext(UserContext);
 
   useEffect(() => {
-    console.log('Usuarios actualizados:', users);
 }, [users]);
 
   //verificar si algún campo esta lleno
   const isAnyFieldFilled = name !== '' || email !== '' || password !== '';
  
-
-  console.log('Contexto en CreateAccount:', users);
 
   function validate(field, label){
     if (!field) {
@@ -49,8 +45,6 @@ function CreateAccount() {
 
   function handleCreate(event){
     event.preventDefault(); // Evita el comportamiento predeterminado del formulario
-    console.log('Creando cuenta:', name, email, password);
-    console.log(name, email, password);
     setErrorMessage('');
     if (!validate(name, 'name') || !validate(email, 'email') || !validate(password, 'password')){
       return;
@@ -61,8 +55,6 @@ function CreateAccount() {
     //Agrega nuevo usuario y registra la transacción
     addTransaction(email, 'Account Creation', 0, newUser);
     setUsers([...users, newUser]);
-    
-    console.log('Usuarios actualizados:', users);
     setShow(false);
     setStatus('Account created successfully.');
   }
