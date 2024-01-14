@@ -11,7 +11,7 @@ function Home(){
           <Card.Body>
             <Card.Title>Welcome to the bank</Card.Title>
             <Card.Text>You can use this bank</Card.Text>
-            <img src="https://cesar-jimenezbankingaplication.s3.sa-east-1.amazonaws.com/bank.png" className="img-fluid" alt="Bad Bank Logo" />
+            <img src="./bank.png" className="img-fluid" alt="Bad Bank Logo" />
           </Card.Body>
         </Card>
    
