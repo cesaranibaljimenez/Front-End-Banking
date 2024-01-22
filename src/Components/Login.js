@@ -7,7 +7,7 @@ function Login() {
   const[email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const {users, setUsers, currentUser, setCurrentUser, addTransaction} = useContext(UserContext);
+  const {users, setCurrentUser,} = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
