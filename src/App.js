@@ -20,8 +20,8 @@ function App() {
   return (
     <UserProvider>
    <Router>
-      <h1>Welcome to Band Bank</h1>
-      <NavBar />
+        <NavBar />
+      <h1>Welcome to Band Bank</h1>  
       <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/CreateAccount/" element={<CreateAccount />} />

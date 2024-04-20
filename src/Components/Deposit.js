@@ -34,8 +34,8 @@ function Deposit() {
         const updatedUser = {...currentUser, balance: currentUser.balance + amount };
         setCurrentUser(updatedUser);
         addTransaction(currentUser.email, 'Deposit', amount);
-        setStatusMessage('Deposit succesful.');
-        setStatusType('succes'); 
+        setStatusMessage('Deposit successful.');
+        setStatusType('success'); 
         setShowStatus(true);   
         setDepositAmount('');
     };
