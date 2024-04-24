@@ -23,8 +23,12 @@ function NavBar() {
             <Link className="nav-link" to="/Withdraw/" title="Make a witdrawal transaction">Withdraw</Link>
           </li>
           <li className="nav-item">
+            <Link className="nav-link" to="/Transfers/" title="Sende money to others">Transfers</Link>
+          </li>
+          <li className="nav-item">
             <Link className="nav-link" to="/AllData/" title="View transaction movement">AllData</Link>
           </li>
+         
          
         </ul>
       </div>

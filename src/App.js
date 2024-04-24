@@ -9,7 +9,9 @@ import CreateAccount from './Components/CreateAccount';
 import Login from './Components/Login';
 import Deposit from './Components/Deposit';
 import Withdraw from './Components/Withdraw';
+import Transfers from './Components/Transfers';
 import AllData from './Components/AllData';
+
 
 
 
@@ -27,7 +29,8 @@ function App() {
           <Route path="/CreateAccount/" element={<CreateAccount />} />
           <Route path="/Login/" element={<Login />} />
           <Route path="/Deposit/" element={<Deposit />} />
-          <Route path="/Withdraw" element={<Withdraw />} />
+          <Route path="/Withdraw/" element={<Withdraw />} />
+          <Route path="/Transfers/" element={<Transfers/>}/>
           <Route path="/AllData/" element={<AllData />} />
         </Routes>
     </Router>
