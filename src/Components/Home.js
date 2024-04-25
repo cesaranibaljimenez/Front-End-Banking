@@ -2,9 +2,18 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 
 function Home(){
+
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    // Realizar una solicitud GET al backend para obtener un mensaje de bienvenida
+    fetch('/api/welcome-message')
+      .then(response => response.json())
+      .then(data => setMessage(data.message))
+      .catch(error => console.error('Error fetching welcome message:', error));
+  }, []);
   
   return (
-    
     
         <Card bg="primary" text="white" style={{ maxWidth: "18rem"}}>
           <Card.Header>BadBank Landing Page</Card.Header>
