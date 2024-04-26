@@ -2,7 +2,7 @@ import React, {useState, useContext, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, Alert } from 'react-bootstrap';
 import { UserContext } from '../context';
-const superagent = require('superagent');
+
 
 
 
@@ -52,33 +52,12 @@ function CreateAccount() {
     }
 
     //Crea el nuevo usuario
-    const newUser = {name, email, password, role:"client", balance: 0, transactions: []};
+    const newUser = {name, email, password, balance: 0, transactions: []};
     //Agrega nuevo usuario y registra la transacción
-
-    //Realizar la solicitud POST al backend para crear la cuenta
-    superagent
-      .post('http://localhost:3000/api/create-account') // URL del backend
-      .send(newUser)// Enviar los datos del nuevo usuario
-      .set('Content-Type', 'application/json')
-      .then(response =>{
-        if(response.status === 201) {
-          // Si la solicitud es exitosa, manejar la respuesta
-          setStatus('Account created succesfully.');
-          setShow(false);
-        } else if (response.status >= 400 && response.status < 500) {
-          setErrorMessage(response.body.message || 'Client error: Please check your inputs.');
-        } else if (response.status >= 500 && response.status < 600) {
-          setErrorMessage('Server error: Please try again later.');
-        } else {
-          setErrorMessage('Unknown error occurred.');
-
-        }
-      })
-      .catch(error => {
-        console.error('Error creating account:', error);
-        setErrorMessage('Error creating account');
-      })
-
+    addTransaction(email, 'Account Creation', 0, newUser);
+    setUsers([...users, newUser]);
+    setShow(false);
+    setStatus('Account created successfully.');
   }
 
     function clearForm() {
