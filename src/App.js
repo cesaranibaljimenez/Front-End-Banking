@@ -23,7 +23,7 @@ function App() {
     <UserProvider>
    <Router>
         <NavBar />
-      <h1>Welcome to Band Bank</h1>  
+      <h1>Welcome to FullStack Bank</h1>  
       <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/CreateAccount/" element={<CreateAccount />} />

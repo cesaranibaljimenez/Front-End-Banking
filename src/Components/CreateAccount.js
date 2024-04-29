@@ -1,7 +1,9 @@
+import axios from 'axios';
 import React, {useState, useContext, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, Alert } from 'react-bootstrap';
 import { UserContext } from '../context';
+import {hashPassword}  from '../hashPassword';
 
 
 
@@ -44,20 +46,36 @@ function CreateAccount() {
     return true;
   }
 
-  function handleCreate(event){
+  async function handleCreate(event){
     event.preventDefault(); // Evita el comportamiento predeterminado del formulario
     setErrorMessage('');
     if (!validate(name, 'name') || !validate(email, 'email') || !validate(password, 'password')){
       return;
     }
 
-    //Crea el nuevo usuario
-    const newUser = {name, email, password, balance: 0, transactions: []};
-    //Agrega nuevo usuario y registra la transacción
-    addTransaction(email, 'Account Creation', 0, newUser);
-    setUsers([...users, newUser]);
-    setShow(false);
-    setStatus('Account created successfully.');
+    try{
+      const hashedPassword = await hashPassword(password);
+      //Crea el nuevo usuario
+      const newUser = {name, email, password: hashedPassword, balance: 0, transactions: []};
+      // Hacer la solicitud POST al backend para crear la cuenta
+      console.log('Enviando solicitud POST al backend...');
+      const response = await axios.post('http://localhost:8080/api/CreateAccount', newUser);
+      console.log('Respuesta del servidor:', response);
+      if (response.status === 201) {
+        setStatus('Account created successfully.');
+        setShow(false);
+        // Agregar nuevo usuario y registrar la transacción
+        addTransaction(email, 'Account Creation', 0, newUser);
+        setUsers([...users, newUser]);
+      } else {
+        console.log('Error: código de estado inesperado', response.status);
+        setErrorMessage('Unknown error occurred.');
+      }
+    } catch (error) {
+      console.error('Error hashing password:', error);
+      console.error('Error creating account:', error);
+      setErrorMessage('Error creating account');
+    }
   }
 
     function clearForm() {
